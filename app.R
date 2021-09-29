@@ -38,11 +38,9 @@ ui <- fluidPage(
         ),
 
         mainPanel(
-           plotOutput("spatial_plot")
+           plotOutput("spatial_plot", height="auto")
         )
     ),
-    br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),
-    br(),br(),br(),br(),br(),br(),br(),br(),br(),br(),
     hr(),
     fluidRow(
         column(12,
@@ -52,11 +50,12 @@ ui <- fluidPage(
     
 )
 
-# Define server logic required to draw a histogram
-server <- function(input, output) {
+server <- function(input, output, session) {
     
     selected_gene_data <- reactive({
         selected_gene = input$gene
+        
+        print(session$clientData$output_spatial_plot_width)
         
         exp_data %>%
             filter(gene == input$gene) %>%
@@ -74,10 +73,23 @@ server <- function(input, output) {
                   axis.title.y=element_blank(),
                   axis.text.y=element_blank(),
                   axis.ticks.y=element_blank(),
-                  text = element_text(size=20)) +
+                  text = element_text(size=20),
+                  aspect.ratio=dim(img)[1]/dim(img)[2]) +
             labs(color = "Gene\nExpression\nLevel", size = "Gene\nExpression\nLevel") + 
             scale_alpha(guide = 'none')
-    }, width=1000, height=850)
+    }, width = function() {
+        if (session$clientData$output_spatial_plot_width > 1000) {
+            1000;
+        } else {
+            session$clientData$output_spatial_plot_width
+        }
+    }, height = function() {
+        if (session$clientData$output_spatial_plot_width > 1000) {
+            800;
+        } else {
+            session$clientData$output_spatial_plot_width * 0.8
+        }
+    })
     
     output$data_summary <- renderReactable({
         reactable(selected_gene_data() %>%
@@ -86,6 +98,10 @@ server <- function(input, output) {
                       filter(location != "pos_099", location != "pos_098"), 
                   filterable = TRUE, pagination = F)
     })
+    
+    # output$sized_plot <- renderUI({
+    #     plotOutput("spatial_plot", height = "auto")
+    # })
 }
 
 # Run the application 
