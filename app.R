@@ -69,7 +69,9 @@ ui <- fluidPage(
             ),
             hr(),
             downloadButton("norm_data_download", label = "Download Normalized Data Set"),
-            downloadButton("full_data_download", label = "Download Full Data Set")
+            downloadButton("full_data_download", label = "Download Full Data Set"),
+            tags$hr(),
+            tags$p("The source code for this application is available through ", a(href="https://github.com/mbergins/evd68_humanspinalcord_spatial_transcripts","github."))
             
             
         ),
@@ -143,7 +145,7 @@ server <- function(input, output, session) {
     output$full_data_download <- downloadHandler(
         filename = "CTA Initial Dataset.xlsx",
         content = function(file) {
-            file.copy(here('data/all_data/CTA Initial Dataset.xlsx'), file)
+            file.copy(here('data/CTA Initial Dataset.xlsx'), file)
         }
     )
     
