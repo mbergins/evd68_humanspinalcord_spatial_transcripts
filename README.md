@@ -5,7 +5,7 @@ This repository contains the source code for an R shiny application associated w
 * Pub 1
 * Pub 2
 
-You can access this application here. The application provides the user with the means to look up the expression levels of any of the genes measured in study. In addition, the application also provides a visulization of the expression levels of the gene overlayed on the spinal cord slide where the expression values were measured. If you would like to run the application locally, please clone this repository to your computer and run:
+You can access this application here. The application provides the user with the means to look up the expression levels of any of the genes measured in study. In addition, the application also provides a visulization of the expression levels of the select gene overlayed on the spinal cord slice where the expression values were measured. If you would like to run the application locally, please clone this repository to your computer and run:
 
 ```
 shiny::runApp()
