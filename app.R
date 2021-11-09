@@ -13,8 +13,7 @@ location_lookup = read_rds(here('data/location_lookup.rds')) %>%
     mutate(type = fct_relevel(type, c("Inflamed","Control")))
 
 exp_data = read_csv(here('data/vogt_deseq2_norm_counts.csv')) %>%
-    mutate(gs099 = NA, gs098 = NA) %>% 
-    rename(gene = ...1) %>%
+    mutate(gs099 = NA, gs098 = NA) %>%
     pivot_longer(-gene,names_to = "temp",values_to = "exp") %>%
     separate(temp, into=c(NA,"number"),sep = 2) %>%
     mutate(location = paste0("pos_",number)) %>%
