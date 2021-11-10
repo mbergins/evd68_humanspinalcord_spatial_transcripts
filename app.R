@@ -86,7 +86,11 @@ ui <- fluidPage(
 		)
 	),
 	hr(),
-	downloadButton("filt_data_download", label = "Download Filtered Data Set")
+	fluidRow(
+		column(5,downloadButton("filt_data_download", label = "Download Filtered Data Set")),
+		column(6),
+		column(1, a(href="https://github.com/mbergins/evd68_humanspinalcord_spatial_transcripts",img(src='GitHub-Mark-32px.png',alt='Github Logo+Link', align='right')))
+	)
 	
 )
 
