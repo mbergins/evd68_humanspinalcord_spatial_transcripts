@@ -64,7 +64,7 @@ ui <- fluidPage(
 				tags$li("Control: 016-021, 024")
 			),
 			
-			tags$p("The following perivascular regions of interest were not included in the analysis for the manuscript xxxxxxxx:"),
+			tags$p("The following perivascular regions of interest were not included in the analysis for the manuscript Vogt MR, et al. NEJM 2022:"),
 			tags$ul(
 				tags$li("Inflamed: 002-004"),
 				tags$li("Control: 022-023")
