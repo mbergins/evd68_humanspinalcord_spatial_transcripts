@@ -12,4 +12,4 @@ in the root directory.
 
 If you use this code or the results from the application, please cite:
 
-Vogt et al, submitted.
+Vogt MR, et al. [Enterovirus D68 in the Anterior Horn Cells of a Child with Acute Flaccid Myelitis.](https://dx.doi.org/10.1056/NEJMc2118155) N Engl J Med 2022; 386:2059-2060
