@@ -162,7 +162,7 @@ server <- function(input, output, session) {
 	output$filt_data_download <- downloadHandler(
 		filename = paste0("vogt_deseq2_norm_counts_",input$gene,".csv"), 
 		content = function(file) {
-			write_csv(selected_gene_data, file)
+			write_csv(selected_gene_data(), file)
 		} 
 	)
 	
